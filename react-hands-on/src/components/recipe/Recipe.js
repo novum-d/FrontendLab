@@ -1,7 +1,7 @@
 // import React from "react"; v17以降は必要ない
 import React from "react";
-import IngredientsList from "./IngredientsList";
-import Instructions from "./Instructions";
+import IngredientsList from "../ingredient/IngredientsList";
+import Instructions from "../ingredient/Instructions";
 
 function Recipe({name, ingredients, steps}) {
     return (
