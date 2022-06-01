@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useInput } from "../hooks";
+import { useInput } from "../../hooks";
 
 // イミュータブルでもなければ宣言型でもない(DOMノードを直接書き換えている)Reactコンポーネントを「uncontrolled component」という。
 // React以外のライブラリとデータをやり取りする場合には、直接アクセスする必要がある。
@@ -58,9 +58,10 @@ function CollectAddColorForm({ onNewColor = (f) => f }) {
   );
 }
 
+// custom hooks
 export default function AddColorForm({ onNewColor = (f) => f }) {
   const [title, setTitle] = useState("");
-  const [color, setColor] = useState("#000000");
+  const [color, setColor] = useState("#ffffff");
 
   const submit = (e) => {
     e.preventDefault();
