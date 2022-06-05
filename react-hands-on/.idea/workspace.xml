@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1ff66b54-a4fb-4cf5-9c37-30b0da537393" name="Changes" comment="&#10;&#10;# 🎨:art: Improve structure / format of the code&#10;# ⚡️:zap: Improve performance&#10;# 🔥:fire: Remove code or files&#10;# 🐛:bug: Fix a bug&#10;# 🚑️:ambulance: Critical hotfix&#10;# ✨:sparkles: Introduce new features&#10;# 📝:memo: Add or update documentation&#10;# 🚀:rocket: Deploy stuff&#10;# 💄:lipstick: Add or update the UI and style files&#10;# 🎉:tada: Begin a project&#10;# ✅:white_check_mark: Add, update, or pass tests&#10;# 🔒️:lock: Fix security issues&#10;# 🔖:bookmark: Release / Version tags&#10;# 🚨:rotating_light: Fix compiler / linter warnings&#10;# 🚧:construction: Work in progress&#10;# 💚:green_heart: Fix CI Build&#10;# ⬇️:arrow_down: Downgrade dependencies&#10;# ⬆️:arrow_up: Upgrade dependencies&#10;# 📌:pushpin: Pin dependencies to specific versions&#10;# 👷:construction_worker: Add or update CI build system&#10;# 📈:chart_with_upwards_trend: Add or update analytics or track code&#10;# ♻️:recycle: Refactor code&#10;# ➕:heavy_plus_sign: Add a dependency&#10;# ➖:heavy_minus_sign: Remove a dependency&#10;# 🔧:wrench: Add or update configuration files&#10;# 🔨:hammer: Add or update development scripts&#10;# 🌐:globe_with_meridians: Internationalization and localization&#10;# ✏️:pencil2: Fix typos&#10;# 💩:poop: Write bad code that needs to be improved&#10;# ⏪️:rewind: Revert changes&#10;# 🔀:twisted_rightwards_arrows: Merge branches&#10;# 📦️:package: Add or update compiled files or packages&#10;# 👽️:alien: Update code due to external API changes&#10;# 🚚:truck: Move or rename resources (e.g.: files, paths, routes)&#10;# 📄:page_facing_up: Add or update license&#10;# 💥:boom: Introduce breaking changes&#10;# 🍱:bento: Add or update assets&#10;# ♿️:wheelchair: Improve accessibility&#10;# 💡:bulb: Add or update comments in source code&#10;# 🍻:beers: Write code drunkenly&#10;# 💬:speech_balloon: Add or update text and literals&#10;# 🗃️:card_file_box: Perform database related changes&#10;# 🔊:loud_sound: Add or update logs&#10;# 🔇:mute: Remove logs&#10;# 👥:busts_in_silhouette: Add or update contributor(s)&#10;# 🚸:children_crossing: Improve user experience / usability&#10;# 🏗️:building_construction: Make architectural changes&#10;# 📱:iphone: Work on responsive design&#10;# 🤡:clown_face: Mock things&#10;# 🥚:egg: Add or update an easter egg&#10;# 🙈:see_no_evil: Add or update a .gitignore file&#10;# 📸:camera_flash: Add or update snapshots&#10;# ⚗️:alembic: Perform experiments&#10;# 🔍️:mag: Improve SEO&#10;# 🏷️:label: Add or update types&#10;# 🌱:seedling: Add or update seed files&#10;# 🚩:triangular_flag_on_post: Add, update, or remove feature flags&#10;# 🥅:goal_net: Catch errors&#10;# 💫:dizzy: Add or update animations and transitions&#10;# 🗑️:wastebasket: Deprecate code that needs to be cleaned up&#10;# 🛂:passport_control: Work on code related to authorization, roles and permissions&#10;# 🩹:adhesive_bandage: Simple fix for a non-critical issue&#10;# 🧐:monocle_face: Data exploration/inspection&#10;# ⚰️:coffin: Remove dead code&#10;# 🧪:test_tube: Add a failing test&#10;# 👔:necktie: Add or update business logi&#10;# 🩺:stethoscope: Add or update healthcheck&#10;# 🧱:bricks: Infrastructure related changes&#10;# 🧑‍💻:technologist: Improve developer experienc&#10;# git config --global commit.template ~/.gitemoj">
+      <change beforePath="$PROJECT_DIR$/.babelrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/react-hands-on.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/react-hands-on.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/bundle.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/color-data.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/color-data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/recipes.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/recipes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/bundle.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/color/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/color/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/color/StarRating.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/color/StarRating.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/AddColorFrom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/AddColorFrom.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ingredient/Ingredient.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ingredient/IngredientsList.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ingredient/Instructions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/recipe/Menu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/recipe/Recipe.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/starRating/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/starRating/StarRating.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2A4dWRV4Fdh3q9WBPNe1czPuBIR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/hamadatomoki/WebstormProjects/FrontendLab/react-hands-on/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1ff66b54-a4fb-4cf5-9c37-30b0da537393" name="Changes" comment="" />
+      <created>1654272824172</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654272824172</updated>
+      <workItem from="1654272827139" duration="120000" />
+      <workItem from="1654441530888" duration="11000" />
+      <workItem from="1654442442571" duration="14000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

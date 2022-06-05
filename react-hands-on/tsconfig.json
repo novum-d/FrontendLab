@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    // Down leveling（ダウンレベリング）というのは、古いバージョンの JS コードにコンパイルするという意味の TypeScript 用語です。
+    // targetがES3またはES5の際に、ジェネレータのyield*やfor..of構文などのES6から追加されたイテレーション系の記法を、より正確なコードにコンパイルしたい場合にtrueにします。
+    "downlevelIteration": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["src"]
+}
