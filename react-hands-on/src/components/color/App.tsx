@@ -23,13 +23,13 @@ type ColorEventProps = {
 
 type ColorProps = AddColorFormProps & ColorEventProps;
 
-const App: React.FC = () => {
+const App = () => {
   const [colors, setColors] = useState<AddColorFormProps[]>(colorData);
   return (
     <>
       <AddColorForm
         onNewColor={(title: string, color: string) => {
-          const newColor: SetStateAction<AddColorFormProps[]> = [
+          const newColor = [
             ...colors, // 配列を結合するスプレット構文(tsでスプレット構文を書くには、Down levelingが必要)
             {
               id: v4(),
@@ -58,11 +58,11 @@ const App: React.FC = () => {
   );
 };
 
-const ColorList: React.FC<ColorListProps> = ({
+const ColorList = ({
   colors = [],
   onRateColor = () => undefined,
   onRemoveColor = () => undefined,
-}) => {
+}: ColorListProps) => {
   if (!colors.length) return <div>No Colors Listed. (Add a Color)</div>;
   return (
     <div className="color-list">
@@ -78,14 +78,14 @@ const ColorList: React.FC<ColorListProps> = ({
   );
 };
 
-const Color: React.FC<ColorProps> = ({
+const Color = ({
   id,
   title,
   color,
   rating,
   onRemoveColor = () => undefined,
   onRateColor = () => undefined,
-}) => {
+}: ColorProps) => {
   return (
     <section>
       <h1>{title}</h1>

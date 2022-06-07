@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
 import React, { useRef, useState } from "react";
 import { useInput } from "../../hooks";
 
@@ -6,9 +5,7 @@ import { useInput } from "../../hooks";
 // React以外のライブラリとデータをやり取りする場合には、直接アクセスする必要がある。
 
 // uncontrolled component
-const AntiAddColorForm: React.FC<Props> = ({
-  onNewColor = () => undefined,
-}) => {
+const AntiAddColorForm = ({ onNewColor = () => undefined }: Props) => {
   // ref: DOMノードに直接アクセスする方法
   const txtTitle = useRef<HTMLInputElement>(null);
   const hexColor = useRef<HTMLInputElement>(null);
@@ -38,9 +35,7 @@ const AntiAddColorForm: React.FC<Props> = ({
 };
 
 // react component
-const CollectAddColorForm: React.FC<Props> = ({
-  onNewColor = () => undefined,
-}) => {
+const CollectAddColorForm = ({ onNewColor = () => undefined }: Props) => {
   const [title, setTitle] = useState("");
   const [color, setColor] = useState("#ffffff");
 
@@ -73,7 +68,7 @@ const CollectAddColorForm: React.FC<Props> = ({
 };
 
 // custom hooks
-const AddColorForm: React.FC<Props> = ({ onNewColor = () => undefined }) => {
+const AddColorForm = ({ onNewColor = () => undefined }: Props) => {
   const [titleProps, resetTitle] = useInput("");
   const [colorProps, resetColor] = useInput("#000000");
 

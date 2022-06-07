@@ -5,8 +5,8 @@ import React from "react";
 // import Menu from "./components/recipe/Menu";
 // import StarRating from "./components/starRating/StarRating";
 // import App from "./components/starRating/App";
-import App from "./components/color/App";
 // import AddColorForm from "./components/form/AddColorFrom";
+import App from "./components/color/App";
 
 // render(<Menu recipes={data}/>, document.getElementById("root"));
 // render(<StarRating/>, document.getElementById("star-rating"));
