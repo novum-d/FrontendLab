@@ -1,11 +1,18 @@
 import React, { useRef, useState } from "react";
 import { useInput } from "../../hooks";
+import { useColors } from "../color/ColorProvider";
+
+type AddColorFormProps = {
+  onNewColor: (title: string, color: string) => void;
+};
 
 // イミュータブルでもなければ宣言型でもない(DOMノードを直接書き換えている)Reactコンポーネントを「uncontrolled component」という。
 // React以外のライブラリとデータをやり取りする場合には、直接アクセスする必要がある。
 
 // uncontrolled component
-const AntiAddColorForm = ({ onNewColor = () => undefined }: Props) => {
+const AntiAddColorForm = ({
+  onNewColor = () => undefined,
+}: AddColorFormProps) => {
   // ref: DOMノードに直接アクセスする方法
   const txtTitle = useRef<HTMLInputElement>(null);
   const hexColor = useRef<HTMLInputElement>(null);
@@ -35,7 +42,9 @@ const AntiAddColorForm = ({ onNewColor = () => undefined }: Props) => {
 };
 
 // react component
-const CollectAddColorForm = ({ onNewColor = () => undefined }: Props) => {
+const CollectAddColorForm = ({
+  onNewColor = () => undefined,
+}: AddColorFormProps) => {
   const [title, setTitle] = useState("");
   const [color, setColor] = useState("#ffffff");
 
@@ -68,13 +77,15 @@ const CollectAddColorForm = ({ onNewColor = () => undefined }: Props) => {
 };
 
 // custom hooks
-const AddColorForm = ({ onNewColor = () => undefined }: Props) => {
+const AddColorForm = () => {
   const [titleProps, resetTitle] = useInput("");
   const [colorProps, resetColor] = useInput("#000000");
 
+  const { addColor } = useColors();
+
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    onNewColor(titleProps.value, colorProps.value);
+    addColor(titleProps.value, colorProps.value);
     resetTitle();
     resetColor();
   };
@@ -91,10 +102,6 @@ const AddColorForm = ({ onNewColor = () => undefined }: Props) => {
       <button>ADD</button>
     </form>
   );
-};
-
-type Props = {
-  onNewColor: (title: string, color: string) => void;
 };
 
 export default AddColorForm;
