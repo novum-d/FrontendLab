@@ -5,6 +5,7 @@ const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 
 module.exports = {
   mode: "development",
+  devtool: "eval-source-map",
   entry: "./src/index.tsx",
   devServer: {
     static: "./dist",
@@ -22,6 +23,7 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
+        exclude: /node_modules/,
       },
       {
         test: /\.(jpe?g|png|gif|svg|ico)$/i,
@@ -29,6 +31,7 @@ module.exports = {
         options: {
           name: "[name].[ext]",
         },
+        exclude: /node_modules/,
       },
     ],
   },
@@ -44,8 +47,6 @@ module.exports = {
       template: "public/index.html",
       favicon: "public/favicon.ico",
     }),
-    // new WebpackManifestPlugin({
-    //   fileName: "manifest.json",
-    // }),
+    new WebpackManifestPlugin(),
   ],
 };
