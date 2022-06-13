@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 
 module.exports = {
   mode: "development",
   entry: "./src/index.tsx",
   devServer: {
-    static: "./public",
+    static: "./dist",
     open: true,
     host: "0.0.0.0",
     port: 3000,
@@ -43,5 +44,8 @@ module.exports = {
       template: "public/index.html",
       favicon: "public/favicon.ico",
     }),
+    // new WebpackManifestPlugin({
+    //   fileName: "manifest.json",
+    // }),
   ],
 };
