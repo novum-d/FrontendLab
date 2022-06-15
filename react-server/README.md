@@ -4,7 +4,7 @@
 
 この記事では、導入することで格段に開発効率を上げることができる webpack-dev-server を使った React + TypeScript の開発環境の構築方法をご紹介します。
 
-```sh
+```shell
 $ node -v
 v16.15.1
 
@@ -14,8 +14,8 @@ $ yarn -v
 
 eslit の設定
 
-```sh
-yarn create @eslint/config
+```shell
+$ yarn create @eslint/config
 ```
 
 ## 1. React + TypeScript のプロジェクトを作成する
@@ -26,36 +26,85 @@ yarn create @eslint/config
 
 - インストール方法
 
-  ```sh
+  ```shell
   $ yarn global add create-react-app
   ```
 
 - 使用方法
-  ```sh
+  ```shell
   $ yarn create react-app react-server --template typescript
   ```
 
 ## 2. eslint, prettier の設定
 
-React および TypeScript のスタイルガイドに準拠させ、一貫した自動フォーマットを行うために eslint, pritter に関する設定を行います。
+React および TypeScript のスタイルガイドに準拠させ、一貫した自動フォーマットを行うために EsLint, Prettier に関する設定を行います。
 
-eslint, prittier はそれぞれ、JavaScript の Linter, Formatter のディファクトスタンダードです。
+EsLint, Prettier はそれぞれ、JavaScript の Linter, Formatter のディファクトスタンダードです。
 
-eslint は、コードを静的解析をし、バグやスタイルガイドに準拠していない部分を検知するのに役立ちます。一方、prettier は、コードスタイルを統一することを目的としています。コードスタイルを統一することで複数のコミッターが存在するチーム開発の場合、コードスタイルの違いによる議論を避けることができるため、非常に重要となってきます。
+EsLint は、コードを静的解析をし、バグやスタイルガイドに準拠していない部分を検知するのに役立ちます。一方、Prettier は、コードスタイルを統一することを目的としています。コードスタイルを統一することでコードスタイルの違いによる議論を避けることができるため、重要なツールです。
 
 eslint, prettier は、create-react-app によりすでにインストールされているので早速、設定を行っていきます。
 
-1.  How would you like to use ESLint? …
-2.  What type of modules does your project use? …
+### eslint の設定
 
-3.  Which framework does your project use? …
-4.  Does your project use TypeScript? ›
+eslint の設定は、次のコマンドを実行して対話形式で行います。
 
-5.  Where does your code run? …
+```shell
+$ yarn create @eslint/config
+```
 
-6.  What format do you want your config file to be in? …
+以下のように質問に答えていきます。
 
-7.  Would you like to install them now? …
+1.  コードをチェックする範囲
+    ![](images/1.png)
+2.  モジュール  
+     ウェブブラウザがデフォルトで採用している ES Modules をします。
+    ![](images/2.png)
+3.  UI フレームワーク  
+    React を選択します。
+    ![](images/3.png)
+4.  TypeScript を使用するかどうか  
+    Yes を選択します。
+    ![](images/4.png)
+5.  コードの実行環境  
+    この質問に対してはスペースで複数選択が可能です。
+    ![](images/5.png)
+6.  EsLint の設定ファイルの形式  
+    デフォルトを選択します。
+    ![](images/6.png)
+7.  スタイルガイドの設定方法  
+    有名なスタイルガイドを使用するように選択します。
+    ![](images/7.png)
+8.  スタイルガイドの種類  
+    GitHub 上で最も人気のある Airbnb を選択します。
+    ![](images/8.png)
+
+9.  追加で必要な依存関係をインストールするか  
+    Yes を選択します。
+    ![](images/9.png)
+10. `9` のインストールで使用するパッケージマネージャ  
+    yarn を選択します。
+    ![](images/10.png)
+
+すべての質問に答えると EsLint の設定ファイルである`.eslintrc.js`が作成されます。
+
+### Prettier の設定
+
+プロジェクト直下に Prettier の設定ファイル `.prettierrc.json`を作成します。
+
+デフォルト設定を使用します。お気に入りの設定がある場合は、変更できます。
+
+```shell
+$ echo {} > .prettierrc.json
+```
+
+### EsLint, Prettier の競合阻止
+
+eslint に
+
+eslint-config-prettier の
+
+### V
 
 ## 3. webpack の導入
 
