@@ -12,7 +12,6 @@
           rating: 0,
           title,
           color,
-          kkkkkkkkkk,
         },
       ];
       setColors(newColor);
