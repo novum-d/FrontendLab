@@ -5,10 +5,9 @@ const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 
 module.exports = {
   mode: "development",
-  devtool: "eval-source-map",
+  devtool: "inline-source-map",
   entry: "./src/index.tsx",
   devServer: {
-    static: "./dist",
     open: true,
     hot: true,
     host: "0.0.0.0",
@@ -40,8 +39,8 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"],
   },
   output: {
+    path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
   },
   plugins: [
     new HtmlWebpackPlugin({
