@@ -1,5 +1,6 @@
-import { render } from "react-dom";
-import Checkbox from "./components/checkbox/checkbox";
+import Checkbox from "./components/checkbox/Checkbox";
+import { createRoot } from "react-dom/client";
+import { StrictMode } from "react";
 
 // import data from "../data/recipes.json";
 // import Menu from "./components/recipe/Menu";
@@ -8,12 +9,6 @@ import Checkbox from "./components/checkbox/checkbox";
 // import AddColorForm from "./components/form/AddColorFrom";
 // import App from "./components/color/App";
 // import ColorProvider from "./components/color/ColorProvider";
-
-// render(<Menu recipes={data}/>, document.getElementById("root"));
-// render(<StarRating/>, document.getElementById("star-rating"));
-// render(<App/>, document.getElementById("star-rating"));
-// render(<AddColorForm />, document.getElementById("form"));
-// render(<App />, document.getElementById("color"));
 
 // render(
 //   // Providerで囲むことで、一部のコンポーネントにデータを公開することができる
@@ -24,4 +19,11 @@ import Checkbox from "./components/checkbox/checkbox";
 //   document.getElementById("color")
 // );
 
-render(<Checkbox />, document.getElementById("checkbox"));
+const rootElement = document.getElementById("checkbox") as Element;
+const root = createRoot(rootElement);
+
+root.render(
+  <StrictMode>
+    <Checkbox />
+  </StrictMode>
+);

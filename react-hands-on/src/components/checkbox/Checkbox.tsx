@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const Checkbox = () => {
   const [checked, setChecked] = useState(false);
-  alert(`checked: ${checked}`);
   return (
     <>
       <input
