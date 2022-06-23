@@ -7,6 +7,7 @@ export default defineConfig({
   build: {
     // root (= ./src) から見た相対パスで指定
     outDir: "../public",
+    emptyOutDir: true,
   },
   server: {
     open: true,

@@ -3,12 +3,8 @@ import { createRoot } from "react-dom/client";
 import { StrictMode } from "react";
 
 // import data from "../data/recipes.json";
-// import Menu from "./components/recipe/Menu";
-// import StarRating from "./components/starRating/StarRating";
-// import App from "./components/starRating/App";
-// import AddColorForm from "./components/form/AddColorFrom";
-// import App from "./components/color/App";
-// import ColorProvider from "./components/color/ColorProvider";
+
+import App from "./components/hook-sample/useEffectAndHook/App";
 
 // render(
 //   // Providerで囲むことで、一部のコンポーネントにデータを公開することができる
@@ -24,6 +20,6 @@ const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <Checkbox />
+    <App />
   </StrictMode>
 );
