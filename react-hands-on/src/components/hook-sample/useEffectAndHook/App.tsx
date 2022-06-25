@@ -1,18 +1,6 @@
-import React, { createElement, useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useAnyKeyToRender } from "../hook";
 
-function useForceUpdate() {
-  const [value, setValue] = useState(0);
-  return () => setValue((value) => value + 1);
-}
-
-function useAnyKeyToRender() {
-  const forceUpdate = useForceUpdate();
-  // keydownイベントハンドラにforceUpdateを指定
-  useEffect(() => {
-    window.addEventListener("keydown", forceUpdate); //
-    return () => window.removeEventListener("keydown", forceUpdate);
-  }, []);
-}
 const words = ["sick", "powder", "day"];
 
 const App = () => {

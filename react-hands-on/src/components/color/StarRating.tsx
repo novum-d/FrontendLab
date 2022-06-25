@@ -31,7 +31,9 @@ type StarProps = {
 };
 
 const Star = ({ selected = false, onSelect = () => undefined }: StarProps) => (
-  <FaStar color={selected ? "red" : "grey"} onClick={onSelect} />
+  <button onClick={onSelect}>
+    <FaStar color={selected ? "red" : "grey"} />
+  </button>
 );
 
 export default StarRating;
