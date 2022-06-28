@@ -3,7 +3,7 @@ import { StrictMode } from "react";
 
 // import data from "../data/recipes.json";
 
-import App from "./components/githubApi/GitubUser";
+import App from "./components/githubApi/GithubUser";
 
 // render(
 //   // Providerで囲むことで、一部のコンポーネントにデータを公開することができる
