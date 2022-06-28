@@ -3,7 +3,7 @@ import { StrictMode } from "react";
 
 // import data from "../data/recipes.json";
 
-import App from "./components/hook-sample/memo/App";
+import App from "./components/githubApi/GitubUser";
 
 // render(
 //   // Providerで囲むことで、一部のコンポーネントにデータを公開することができる
