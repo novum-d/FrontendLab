@@ -3,7 +3,7 @@ import { StrictMode } from "react";
 
 // import data from "../data/recipes.json";
 
-import App from "./components/virtualizedList/App";
+import App from "./components/windowList/App";
 
 // render(
 //   // Providerで囲むことで、一部のコンポーネントにデータを公開することができる

@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
-// import { List } from "../renderProps/App";
-import { List } from "react-virtualized";
+import { CSSProperties } from "react";
+import { FixedSizeList } from "react-window";
 
 const bigList = [...Array(5000)].map(() => ({
   name: faker.name.findName(),
@@ -8,13 +8,13 @@ const bigList = [...Array(5000)].map(() => ({
   avatar: faker.internet.avatar(),
 }));
 
-type RowProps<T> = {
+type RowProps = {
   index: number;
-  style: T;
+  style: CSSProperties;
 };
 
 const App = () => {
-  const renderRow = <T,>({ index, style }: RowProps<T>) => (
+  const renderRow = ({ index, style }: RowProps) => (
     <div style={{ ...style, ...{ display: "flex" } }}>
       <img src={bigList[index].avatar} alt={bigList[index].name} width={50} />
       <p>
@@ -24,13 +24,14 @@ const App = () => {
   );
 
   return (
-    <List
+    <FixedSizeList
       height={window.innerHeight}
       width={window.innerWidth - 20}
-      rowCount={bigList.length}
-      estimatedRowSize={50}
-      rowRenderer={() => renderRow()}
-    ></List>
+      itemCount={bigList.length}
+      itemSize={50}
+    >
+      {renderRow}
+    </FixedSizeList>
   );
 };
 
