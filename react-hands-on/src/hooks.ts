@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { LoginProps } from "./components/githubApi/GithubUser";
 
 const useInput = (initialValue: string) => {
   const [value, setValue] = useState(initialValue);
@@ -13,4 +14,23 @@ const useInput = (initialValue: string) => {
   ] as const;
 };
 
-export default useInput;
+const useFetch = (uri: string) => {
+  const [data, setData] = useState<LoginProps>();
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    if (!uri) return;
+    fetch(uri)
+      .then((data) => data.json())
+      .then(setData)
+      .then(() => setLoading(false))
+      .catch(setError);
+  }, [uri]);
+  return {
+    loading,
+    data,
+    error,
+  };
+};
+
+export { useInput, useFetch };

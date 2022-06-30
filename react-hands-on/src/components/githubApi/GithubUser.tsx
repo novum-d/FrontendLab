@@ -1,42 +1,26 @@
 import React, { useEffect, useState } from "react";
+import { useFetch } from "../../hooks";
 
 const App = () => {
   const [login, setLogin] = useState("");
   return (
     <>
-      <SearchForm login={login} setLogin={setLogin} />
+      <SearchForm setLogin={setLogin} />
       <GitHubUser login={login} />
     </>
   );
 };
 
-// hook
-const useFetch = (uri: string) => {
-  const [data, setData] = useState<LoginProps>();
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    if (!uri) return;
-    fetch(uri)
-      .then((data) => data.json())
-      .then(setData)
-      .then(() => setLoading(false))
-      .catch(setError);
-  }, [uri]);
-  return {
-    loading,
-    data,
-    error,
-  };
+const GitHubUser = ({ login }: { login: string }) => {
+  return (
+    <Fetch
+      uri={`https://api.github.com/users/${login}`}
+      renderSuccess={UserDetails}
+    />
+  );
 };
 
-const GitHubUser = ({ login }: { login: string }) => {
-  const { loading, data, error } = useFetch(
-    `https://api.github.com/users/${login}`
-  );
-  if (error) return <pre>error: {JSON.stringify(error, null, 2)}</pre>;
-  if (loading) return <h1>loading...</h1>;
-  if (!data) return null;
+const UserDetails = ({ data }: { data: LoginProps }) => {
   return (
     <div className="githubUser">
       <img src={data.avatar_url} alt={data.login} style={{ width: 200 }} />
@@ -49,12 +33,7 @@ const GitHubUser = ({ login }: { login: string }) => {
   );
 };
 
-type SearchFormProps = {
-  login: string;
-  setLogin: (login: string) => void;
-};
-
-const SearchForm = ({ login, setLogin }: SearchFormProps) => {
+const SearchForm = ({ setLogin }: { setLogin: (login: string) => void }) => {
   const [text, setText] = useState("");
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,15 +58,16 @@ const Fetch = ({
   uri,
   renderSuccess,
   loadingFallback = <p>loading...</p>,
-  renderError = (error) => <pre>{JSON.stringify(error, null, 2)}</pre>,
+  renderError = (error) => <p>Something went wrong... {error.message}</p>,
 }: FetchProps) => {
   const { loading, data, error } = useFetch(uri);
   if (error) return renderError(error);
   if (loading) return loadingFallback;
-  if (data) return renderSuccess(data);
+  if (data) return renderSuccess({ data: data });
+  return null;
 };
 
-type LoginProps = {
+export type LoginProps = {
   name: string;
   login: string;
   avatar_url: string;
@@ -96,9 +76,9 @@ type LoginProps = {
 
 type FetchProps = {
   uri: string;
-  renderSuccess: (data: LoginProps) => JSX.Element;
-  loadingFallback: JSX.Element;
-  renderError: (error: Error) => JSX.Element;
+  renderSuccess: ({ data }: { data: LoginProps }) => JSX.Element;
+  loadingFallback?: JSX.Element | null;
+  renderError?: (error: Error) => JSX.Element | null;
 };
 
 export default App;
