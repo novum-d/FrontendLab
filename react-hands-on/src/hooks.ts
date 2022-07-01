@@ -21,7 +21,10 @@ const useFetch = (uri: string) => {
   useEffect(() => {
     if (!uri) return;
     fetch(uri)
-      .then((data) => data.json())
+      .then((data) => {
+        console.log(data.json());
+        return data.json();
+      })
       .then(setData)
       .then(() => setLoading(false))
       .catch(setError);
@@ -33,7 +36,7 @@ const useFetch = (uri: string) => {
   };
 };
 
-const useIterator = (items = [], initialValue = 0) => {
+const useIterator = (items: string[] = [], initialValue = 0) => {
   const [i, setIndex] = useState(initialValue);
 
   const prev = useCallback(() => {
@@ -48,7 +51,7 @@ const useIterator = (items = [], initialValue = 0) => {
 
   const item = useMemo(() => items[i], [i]);
 
-  return [item || items[0], prev, next];
+  return [item || items[0], prev, next] as const;
 };
 
 export { useInput, useFetch, useIterator };

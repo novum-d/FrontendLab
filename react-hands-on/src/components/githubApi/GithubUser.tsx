@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useFetch } from "../../hooks";
+import { useFetch, useIterator } from "../../hooks";
 
 const App = () => {
   const [login, setLogin] = useState("");
@@ -7,6 +7,26 @@ const App = () => {
     <>
       <SearchForm setLogin={setLogin} />
       <GitHubUser login={login} />
+    </>
+  );
+};
+const SearchForm = ({ setLogin }: { setLogin: (login: string) => void }) => {
+  const [text, setText] = useState("");
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLogin(text);
+  };
+  return (
+    <>
+      <form onSubmit={submit}>
+        <input
+          type="text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Github User..."
+        />
+        <button>検索</button>
+      </form>
     </>
   );
 };
@@ -29,28 +49,25 @@ const UserDetails = ({ data }: { data: LoginProps }) => {
         {data.name && <p>Name: {data.name}</p>}
         {data.location && <p>Location: {data.location}</p>}
       </div>
+      <UserRepositories
+        login={data.login}
+        onSelect={(repoName) => console.log(`${repoName} selected`)}
+      />
     </div>
   );
 };
 
-const SearchForm = ({ setLogin }: { setLogin: (login: string) => void }) => {
-  const [text, setText] = useState("");
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLogin(text);
-  };
+const UserRepositories = ({
+  login,
+  onSelect = () => undefined,
+}: UserRepositoriesProps) => {
   return (
-    <>
-      <form onSubmit={submit}>
-        <input
-          type="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="Github User..."
-        />
-        <button>検索</button>
-      </form>
-    </>
+    <Fetch
+      uri={`https://api.github.com/users/${login}/repos`}
+      renderSuccess={({ data }) => (
+        <RepoMenu repositories={data} onSelect={onSelect} />
+      )}
+    />
   );
 };
 
@@ -67,6 +84,36 @@ const Fetch = ({
   return null;
 };
 
+const RepoMenu = ({
+  repositories,
+  onSelect = () => undefined,
+}: RepoMenuProps) => {
+  const [name, previous, next] = useIterator(Object.values(repositories));
+  useEffect(() => {
+    console.log(repositories);
+    if (!name) return;
+    onSelect(name);
+  }, [name]);
+  return (
+    <div style={{ display: "flex" }}>
+      <button onClick={previous}>&lt;</button>
+      <p>{name}</p>
+      <button onClick={next}>&gt;</button>
+    </div>
+  );
+};
+
+type UserRepositoriesProps = OnSelectProps & {
+  login: string;
+};
+type RepoMenuProps = OnSelectProps & {
+  repositories: LoginProps;
+};
+
+type OnSelectProps = {
+  onSelect: (name: string) => void;
+};
+
 export type LoginProps = {
   name: string;
   login: string;
@@ -81,4 +128,4 @@ type FetchProps = {
   renderError?: (error: Error) => JSX.Element | null;
 };
 
-export { App, Fetch };
+export default App;

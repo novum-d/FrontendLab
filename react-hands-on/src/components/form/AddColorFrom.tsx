@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import useInput from "../../hooks";
+import { useInput } from "../../hooks";
 import { useColors } from "../color/ColorProvider";
 
 type AddColorFormProps = {
