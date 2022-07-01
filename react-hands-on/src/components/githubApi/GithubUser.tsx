@@ -81,4 +81,4 @@ type FetchProps = {
   renderError?: (error: Error) => JSX.Element | null;
 };
 
-export default App;
+export { App, Fetch };
