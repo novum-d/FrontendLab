@@ -1,35 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useFetch, useIterator } from "../../hooks";
-
-const App = () => {
-  const [login, setLogin] = useState("");
-  return (
-    <>
-      <SearchForm setLogin={setLogin} />
-      <GitHubUser login={login} />
-    </>
-  );
-};
-const SearchForm = ({ setLogin }: { setLogin: (login: string) => void }) => {
-  const [text, setText] = useState("");
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLogin(text);
-  };
-  return (
-    <>
-      <form onSubmit={submit}>
-        <input
-          type="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="Github User..."
-        />
-        <button>検索</button>
-      </form>
-    </>
-  );
-};
+import { useEffect } from "react";
+import { useIterator } from "../../hooks";
+import styled from "styled-components";
+import Fetch from "./Fetch";
 
 const GitHubUser = ({ login }: { login: string }) => {
   return (
@@ -64,40 +36,35 @@ const UserRepositories = ({
   return (
     <Fetch
       uri={`https://api.github.com/users/${login}/repos`}
-      renderSuccess={({ data }) => (
+      renderSuccess={({ data }: { data: { name: string }[] }) => (
         <RepoMenu repositories={data} onSelect={onSelect} />
       )}
     />
   );
 };
 
-const Fetch = ({
-  uri,
-  renderSuccess,
-  loadingFallback = <p>loading...</p>,
-  renderError = (error) => <p>Something went wrong... {error.message}</p>,
-}: FetchProps) => {
-  const { loading, data, error } = useFetch(uri);
-  if (error) return renderError(error);
-  if (loading) return loadingFallback;
-  if (data) return renderSuccess({ data: data });
-  return null;
-};
+const RepositoryName = styled.p`
+  width: 300px;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+`;
 
 const RepoMenu = ({
   repositories,
   onSelect = () => undefined,
 }: RepoMenuProps) => {
-  const [name, previous, next] = useIterator(Object.values(repositories));
+  if (repositories.length === 0) return null;
+  const [{ name }, previous, next] = useIterator(repositories);
+  console.log(`name: ${name}`);
   useEffect(() => {
-    console.log(repositories);
     if (!name) return;
     onSelect(name);
   }, [name]);
   return (
     <div style={{ display: "flex" }}>
       <button onClick={previous}>&lt;</button>
-      <p>{name}</p>
+      <RepositoryName>{name}</RepositoryName>
       <button onClick={next}>&gt;</button>
     </div>
   );
@@ -107,7 +74,7 @@ type UserRepositoriesProps = OnSelectProps & {
   login: string;
 };
 type RepoMenuProps = OnSelectProps & {
-  repositories: LoginProps;
+  repositories: { name: string }[];
 };
 
 type OnSelectProps = {
@@ -121,11 +88,4 @@ export type LoginProps = {
   location: string;
 };
 
-type FetchProps = {
-  uri: string;
-  renderSuccess: ({ data }: { data: LoginProps }) => JSX.Element;
-  loadingFallback?: JSX.Element | null;
-  renderError?: (error: Error) => JSX.Element | null;
-};
-
-export default App;
+export default GitHubUser;

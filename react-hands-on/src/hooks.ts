@@ -15,15 +15,16 @@ const useInput = (initialValue: string) => {
 };
 
 const useFetch = (uri: string) => {
-  const [data, setData] = useState<LoginProps>();
+  const [data, setData] = useState();
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
+  const token = "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";
   useEffect(() => {
     if (!uri) return;
-    fetch(uri)
+    fetch(uri, { headers: { Authorization: `Bearer ${token}` } })
       .then((data) => {
-        console.log(data.json());
-        return data.json();
+        console.log(data.clone().json());
+        return data.clone().json();
       })
       .then(setData)
       .then(() => setLoading(false))
@@ -36,7 +37,7 @@ const useFetch = (uri: string) => {
   };
 };
 
-const useIterator = (items: string[] = [], initialValue = 0) => {
+const useIterator = <T>(items: T[] = [], initialValue = 0) => {
   const [i, setIndex] = useState(initialValue);
 
   const prev = useCallback(() => {
