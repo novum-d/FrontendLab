@@ -1,6 +1,6 @@
 import { useState } from "react";
-import GitHubUser from "./GithubUser";
-import SearchForm from "./SearchForm";
+import GitHubUser from "./githubUser/GithubUser";
+import SearchForm from "./searchForm/SearchForm";
 
 const App = () => {
   const [login, setLogin] = useState("");

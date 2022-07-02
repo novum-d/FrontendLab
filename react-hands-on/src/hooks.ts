@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { LoginProps } from "./components/githubApi/GithubUser";
 
 const useInput = (initialValue: string) => {
   const [value, setValue] = useState(initialValue);
@@ -18,14 +17,11 @@ const useFetch = (uri: string) => {
   const [data, setData] = useState();
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
-  const token = "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";
+  const token = "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";
   useEffect(() => {
     if (!uri) return;
     fetch(uri, { headers: { Authorization: `Bearer ${token}` } })
-      .then((data) => {
-        console.log(data.clone().json());
-        return data.clone().json();
-      })
+      .then((data) => data.json())
       .then(setData)
       .then(() => setLoading(false))
       .catch(setError);
