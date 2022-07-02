@@ -41,23 +41,23 @@ const RepositoryReadme = ({ repo, login }: ReadmeProps) => {
   const loadReadme = useCallback(async (login: string, repo: string) => {
     setLoading(true);
     const uri = `https://api.github.com/repos/${login}/${repo}/readme`;
-    const { download_url } = await fetch(uri).then((res) => res.json());
-    await fetch(download_url).then((res) =>
-      res
-        .text()
-        .then(setMarkdown)
-        .catch((e) => {
-          setMarkdown("Readme not found.");
-          setError(e);
-        })
-    );
+    const { download_url } = await fetch(uri)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(res.statusText);
+        }
+        setError(undefined);
+        return res.json();
+      })
+      .catch(setError);
+    await fetch(download_url).then((res) => res.text().then(setMarkdown));
     setLoading(false);
   }, []);
   useEffect(() => {
     if (!repo || !login) return;
     loadReadme(login, repo);
   }, [repo]);
-  if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>;
+  if (error) return <pre>Markdown is not found.</pre>;
   if (loading) return <p>Loading...</p>;
   return <ReactMarkdown children={markdown} />;
 };

@@ -17,7 +17,7 @@ const useFetch = (uri: string) => {
   const [data, setData] = useState();
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
-  const token = "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";
+  const token = "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"; // pat
   useEffect(() => {
     if (!uri) return;
     fetch(uri, { headers: { Authorization: `Bearer ${token}` } })
