@@ -1,9 +1,10 @@
 type UserRepositoriesProps = {
   login: string;
+  selectedRepo: string;
   onSelect: (name: string) => void;
 };
 type RepoMenuProps = {
-  login: string;
+  selected: string;
   repositories: { name: string }[];
   onSelect: (name: string) => void;
 };

@@ -6,13 +6,21 @@ import UserRepositories from "./githubUser/UserRepositories";
 
 const App = () => {
   const [login, setLogin] = useState("");
-  const [repo, setRepo] = useState("learning-react");
+  const [repo, setRepo] = useState("");
   return (
     <>
       <SearchForm setLogin={setLogin} />
-      <GitHubUser login={login} />
-      <UserRepositories login={login} onSelect={setRepo} />
-      <RepositoryReadme login={login} repo={repo} />
+      {login && (
+        <>
+          <GitHubUser login={login} />
+          <UserRepositories
+            login={login}
+            selectedRepo={repo}
+            onSelect={setRepo}
+          />
+        </>
+      )}
+      {login && repo && <RepositoryReadme login={login} repo={repo} />}
     </>
   );
 };

@@ -4,21 +4,21 @@ import { ReadmeProps } from "../exports";
 
 const RepositoryReadme = ({ repo, login }: ReadmeProps) => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState<Error>();
   const [markdown, setMarkdown] = useState("");
   const loadReadme = useCallback(async (login: string, repo: string) => {
     setLoading(true);
     const uri = `https://api.github.com/repos/${login}/${repo}/readme`;
-    const { download_url } = await fetch(uri)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(res.statusText);
-        }
+    try {
+      const { download_url } = await fetch(uri).then((res) => {
+        if (!res.ok) throw new Error(res.statusText);
         setError(undefined);
         return res.json();
-      })
-      .catch(setError);
-    await fetch(download_url).then((res) => res.text().then(setMarkdown));
+      });
+      await fetch(download_url).then((res) => res.text().then(setMarkdown));
+    } catch (e) {
+      if (e instanceof Error) setError(e);
+    }
     setLoading(false);
   }, []);
   useEffect(() => {

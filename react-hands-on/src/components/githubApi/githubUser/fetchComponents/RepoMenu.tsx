@@ -11,11 +11,16 @@ const RepositoryName = styled.p`
 `;
 
 const RepoMenu = ({
-  login,
   repositories,
+  selected,
   onSelect = () => undefined,
 }: RepoMenuProps) => {
-  const [{ name }, previous, next] = useIterator(repositories);
+  const [{ name }, previous, next] = useIterator(
+    repositories,
+    selected
+      ? repositories.findIndex((repo) => repo.name === selected)
+      : undefined
+  );
   console.log(`name: ${name}`);
   useEffect(() => {
     if (!name) return;

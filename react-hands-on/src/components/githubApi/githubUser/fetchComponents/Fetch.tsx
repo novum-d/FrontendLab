@@ -7,9 +7,18 @@ const Fetch = <T,>({
   renderError = (error) => <p>Something went wrong... {error.message}</p>,
 }: FetchProps<T>) => {
   const { loading, data, error } = useFetch(uri);
+
   if (error) return renderError(error);
   if (loading) return loadingFallback;
-  if (data) return renderSuccess({ data: data });
+  if (data) {
+    switch (data["message"]) {
+      case "Bad credentials":
+        return <p>資格情報が正しくありません</p>;
+      case "Not Found":
+        return <p>存在しないURLです</p>;
+    }
+    return renderSuccess({ data: data });
+  }
   return null;
 };
 
