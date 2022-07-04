@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-import { useIterator } from "../../../../hooks";
 import { RepoMenuProps } from "../../exports";
+import { useIterator } from "../../hooks";
 
 const RepositoryName = styled.p`
   width: 300px;
