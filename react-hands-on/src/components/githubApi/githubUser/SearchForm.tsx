@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-const SearchForm = ({ setLogin }: { setLogin: (login: string) => void }) => {
+const SearchForm = ({ onSearch }: { onSearch: (login: string) => void }) => {
   const [text, setText] = useState("");
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    setLogin(text);
+    onSearch(text);
   };
   return (
     <>

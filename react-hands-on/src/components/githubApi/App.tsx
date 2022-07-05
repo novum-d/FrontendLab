@@ -9,7 +9,7 @@ const App = () => {
   const [repo, setRepo] = useState("");
   return (
     <>
-      <SearchForm setLogin={setLogin} />
+      <SearchForm onSearch={setLogin} />
       {login && (
         <>
           <GitHubUser login={login} />
