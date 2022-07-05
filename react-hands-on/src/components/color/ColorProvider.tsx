@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from "react";
+import { useState, useContext, createContext } from "react";
 import colorData from "../../data/color-data.json";
 import { AddColorFormProps } from "../color/App";
 import { v4 } from "uuid";

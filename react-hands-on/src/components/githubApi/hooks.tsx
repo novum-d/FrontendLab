@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+const token = "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";
+
 const useFetch = (uri: string) => {
   const [data, setData] = useState();
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
-  const token = "ghp_NtWGtkKT5oICjzt"; // ujwri90HfRjoKoZ1rvigx
   const mounted = useMountedRef();
   useEffect(() => {
     if (!uri) return;
@@ -60,4 +61,4 @@ const useMountedRef = () => {
   return mounted;
 };
 
-export { useFetch, useIterator, useMountedRef };
+export { useFetch, useIterator, useMountedRef, token };

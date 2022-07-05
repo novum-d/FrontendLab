@@ -1,40 +1,13 @@
-import { GraphQLClient } from "graphql-request";
 import { useEffect, useState } from "react";
-import { FixedSizeList } from "react-window";
-import { LoginProps } from "../githubApi/exports";
+import { UserProps } from "../githubApi/exports";
 import UserDetails from "../githubApi/githubUser/fetchComponents/UserDetails";
 import SearchForm from "../githubApi/githubUser/SearchForm";
 import { List } from "../renderProps/RenderProps";
-const query = `
-query findRepos($login:String!) {
-    user(login:$login) {
-        login
-        name
-        location
-        avatar_url: avatarUrl
-        repositories(first:100) {
-            totalCount
-            nodes {
-                name
-            }
-        }
-    }
-}
-`;
-const client = new GraphQLClient("https://api.github.com/graphql", {
-  headers: {
-    Authorization: `Bearer <PERSONAL_ACCESS_TOKEN>`,
-  },
-});
-client
-  .request(query, { login: "moontahoe" })
-  .then((results) => JSON.stringify(results, null, 2))
-  .then(console.log)
-  .catch(console.error);
+import { client, query } from "./Query";
 
 const App = () => {
   const [login, setLogin] = useState("moontahoe");
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState<UserProps>();
   useEffect(() => {
     client
       .request(query, { login })
@@ -55,3 +28,5 @@ const App = () => {
     </>
   );
 };
+
+export default App;

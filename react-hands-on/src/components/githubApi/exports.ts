@@ -16,9 +16,24 @@ type LoginProps = {
   location: string;
 };
 
+type UserProps = LoginProps & {
+  repositories: RepoProps;
+};
+
+type RepoProps = {
+  totalCount: number;
+  nodes: { name: string }[];
+};
+
 type ReadmeProps = {
   repo: string;
   login: string;
 };
 
-export type { LoginProps, ReadmeProps, RepoMenuProps, UserRepositoriesProps };
+export type {
+  LoginProps,
+  UserProps,
+  ReadmeProps,
+  RepoMenuProps,
+  UserRepositoriesProps,
+};
