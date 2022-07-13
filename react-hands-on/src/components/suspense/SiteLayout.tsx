@@ -1,3 +1,5 @@
+import styled from "./App.module.scss";
+
 type SiteLayoutProps = {
   children: JSX.Element;
   menu: JSX.Element;
@@ -5,7 +7,7 @@ type SiteLayoutProps = {
 
 const SiteLayout = ({ children, menu }: SiteLayoutProps) => {
   return (
-    <div className="site-container">
+    <div className={styled.siteContainer}>
       <div>{menu}</div> {/* <menu />でもok */}
       <div>{children}</div>
     </div>
