@@ -3,7 +3,9 @@ import { StrictMode } from "react";
 
 // import data from "../data/recipes.json";
 
-import App from "./components/suspense/App";
+import App from "./components/suspense/app/App";
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorScreen from "./components/suspense/errorBoundary/ErrorScreen";
 
 // render(
 //   // Providerで囲むことで、一部のコンポーネントにデータを公開することができる
