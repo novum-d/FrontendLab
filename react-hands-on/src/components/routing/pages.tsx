@@ -26,6 +26,17 @@ const About = () => {
   return (
     <div>
       <h1>[About]</h1>
+      <ul>
+        <li>
+          <Link to="services">Services</Link>
+        </li>
+        <li>
+          <Link to="history">History</Link>
+        </li>
+        <li>
+          <Link to="location">Location</Link>
+        </li>
+      </ul>
       <Outlet />
     </div>
   );

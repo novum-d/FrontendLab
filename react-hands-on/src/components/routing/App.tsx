@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import {
   Home,
   About,
@@ -16,6 +16,13 @@ const App = () => (
   <div>
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route
+        path="/home"
+        element={
+          // 引数にreplaceがある場合は「replace」, 無い場合は「push」
+          <Navigate to="/" />
+        }
+      />
       <Route path="about" element={<About />}>
         <Route path="services" element={<Services />} />
         <Route path="history" element={<History />} />

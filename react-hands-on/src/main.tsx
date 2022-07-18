@@ -3,7 +3,7 @@ import { StrictMode } from "react";
 
 // import data from "../data/recipes.json";
 
-import App from "./components/routing/App";
+import App from "./components/color/App";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // render(
