@@ -3,9 +3,8 @@ import { StrictMode } from "react";
 
 // import data from "../data/recipes.json";
 
-import App from "./components/suspense/app/App";
-import { ErrorBoundary } from "react-error-boundary";
-import ErrorScreen from "./components/suspense/errorBoundary/ErrorScreen";
+import App from "./components/routing/App";
+import { BrowserRouter as Router } from "react-router-dom";
 
 // render(
 //   // Providerで囲むことで、一部のコンポーネントにデータを公開することができる
@@ -20,6 +19,8 @@ const root = createRoot(document.getElementById("root") as Element);
 
 root.render(
   <StrictMode>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </StrictMode>
 );
