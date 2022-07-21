@@ -3,7 +3,7 @@ import { StrictMode } from "react";
 
 // import data from "../data/recipes.json";
 
-import App from "./components/color/App";
+import App from "./components/suspense/app/App";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // render(
@@ -19,8 +19,6 @@ const root = createRoot(document.getElementById("root") as Element);
 
 root.render(
   <StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <App />
   </StrictMode>
 );
