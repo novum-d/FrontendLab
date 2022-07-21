@@ -2,14 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import {
-  Authentication,
-  Functions,
-  Hosting,
-  MachineLearning,
-  Source,
-  Storage,
-} from "./components/navbar/Pages";
+import Authentication from "./components/pages/Authentication";
+import Database from "./components/pages/Database";
+import Functions from "./components/pages/Functions";
+import Hosting from "./components/pages/Hosting";
+import MachineLearning from "./components/pages/MachineLearning";
+import Storage from "./components/pages/Storage";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -17,7 +15,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="authentication" element={<Authentication />} />
-          <Route path="source" element={<Source />} />
+          <Route path="source" element={<Database />} />
           <Route path="storage" element={<Storage />} />
           <Route path="functions" element={<Functions />} />
           <Route path="hosting" element={<Hosting />} />

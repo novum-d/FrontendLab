@@ -1,9 +1,13 @@
+import HomeIcon from "@mui/icons-material/Home";
 import PeopleIcon from "@mui/icons-material/People";
-import Storage from "@mui/icons-material/Storage";
-import Source from "@mui/icons-material/Source";
-import Public from "@mui/icons-material/Public";
-import Functions from "@mui/icons-material/Functions";
-import School from "@mui/icons-material/School";
+import DnsRoundedIcon from "@mui/icons-material/DnsRounded";
+import PermMediaOutlinedIcon from "@mui/icons-material/PhotoSizeSelectActual";
+import PublicIcon from "@mui/icons-material/Public";
+import SettingsEthernetIcon from "@mui/icons-material/SettingsEthernet";
+import SettingsInputComponentIcon from "@mui/icons-material/SettingsInputComponent";
+import TimerIcon from "@mui/icons-material/Timer";
+import SettingsIcon from "@mui/icons-material/Settings";
+import PhonelinkSetupIcon from "@mui/icons-material/PhonelinkSetup";
 
 export const navbarItems = [
   {
@@ -14,31 +18,31 @@ export const navbarItems = [
   },
   {
     id: 1,
-    icon: <Source />,
+    icon: <DnsRoundedIcon />,
     label: "Source",
     route: "source",
   },
   {
     id: 2,
-    icon: <Storage />,
+    icon: <PermMediaOutlinedIcon />,
     label: "Storage",
     route: "storage",
   },
   {
     id: 3,
-    icon: <Public />,
+    icon: <PublicIcon />,
     label: "Hosting",
     route: "hosting",
   },
   {
     id: 4,
-    icon: <Functions />,
+    icon: <SettingsEthernetIcon />,
     label: "Functions",
     route: "functions",
   },
   {
     id: 5,
-    icon: <School />,
+    icon: <SettingsInputComponentIcon />,
     label: "Machine Learning",
     route: "machine-learning",
   },
